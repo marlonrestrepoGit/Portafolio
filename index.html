@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Marlon Restrepo · Ingeniero de Sistemas y Computación</title>
+<meta name="description" content="Portafolio de Marlon Restrepo: ingeniero de sistemas, desarrollo web full stack, bases de datos y low-code.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0c2340; --ink2:#12335c; --paper:#f3f7fb; --white:#fff;
+  --blue:#2f7bff; --teal:#14b8a6; --gold:#f5b335; --text:#e8f0fa; --mut:#9db3cf;
+  --dark-text:#14243a; --dark-mut:#546a86;
+  --hero-img:none; /* pon aquí tu foto de oficina: url("img/oficina.jpg") */
+  --nav-h:64px;
+}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;scroll-padding-top:var(--nav-h)}
+body{font-family:Figtree,system-ui,sans-serif;background:var(--paper);color:var(--dark-text);line-height:1.6}
+h1,h2,h3{font-family:'Bricolage Grotesque',Figtree,sans-serif;line-height:1.1}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+
+/* NAV */
+nav{position:fixed;inset:0 0 auto 0;height:var(--nav-h);z-index:50;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(16px,4vw,48px);background:rgba(12,35,64,.78);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.08)}
+.logo{font-family:'Bricolage Grotesque';font-weight:800;color:#fff;text-decoration:none;font-size:1.2rem}
+.logo b{color:var(--gold)}
+nav ul{display:flex;gap:6px;list-style:none;padding:0}
+nav ul a{display:block;padding:8px 14px;border-radius:99px;color:var(--mut);text-decoration:none;font-weight:500;font-size:.95rem;transition:.2s}
+nav ul a:hover{color:#fff}
+nav ul a.on{background:var(--gold);color:var(--ink)}
+.burger{display:none;background:none;border:0;color:#fff;font-size:1.6rem;cursor:pointer}
+.bar{position:absolute;left:0;bottom:-1px;height:3px;width:0;background:linear-gradient(90deg,var(--teal),var(--blue),var(--gold))}
+
+/* HERO */
+.hero{position:relative;min-height:100vh;display:grid;align-items:center;padding:calc(var(--nav-h) + 40px) clamp(20px,6vw,96px) 60px;color:var(--text);overflow:hidden;
+  background:linear-gradient(160deg,rgba(12,35,64,.93),rgba(18,51,92,.9)),var(--hero-img) center/cover,var(--ink)}
+#rain{position:absolute;inset:0;width:100%;height:100%;opacity:.35}
+.hero-in{position:relative;display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center;max-width:1180px;margin:auto;width:100%}
+.hello{color:var(--teal);font-weight:600;margin-bottom:12px}
+h1{font-size:clamp(2.6rem,7vw,5.2rem);font-weight:800;color:#fff}
+.role{margin-top:18px;font-size:clamp(1.1rem,2.4vw,1.5rem);color:var(--gold);font-weight:600;min-height:1.6em}
+.role::after{content:"|";margin-left:2px;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.lead{margin-top:18px;max-width:52ch;color:var(--mut);font-size:1.08rem}
+.cta{display:flex;gap:12px;margin-top:30px;flex-wrap:wrap}
+.btn{display:inline-block;padding:13px 24px;border-radius:12px;font-weight:600;text-decoration:none;transition:transform .2s,box-shadow .2s}
+.btn:hover{transform:translateY(-3px)}
+.btn.p{background:var(--gold);color:var(--ink);box-shadow:0 8px 24px rgba(245,179,53,.3)}
+.btn.s{border:2px solid rgba(255,255,255,.3);color:#fff}
+.btn.s:hover{border-color:var(--teal)}
+
+/* editor falso */
+.editor{background:#0a1b31;border:1px solid rgba(255,255,255,.12);border-radius:14px;box-shadow:0 30px 60px rgba(0,0,0,.4);overflow:hidden;transform:rotate(1.5deg);animation:float 6s ease-in-out infinite}
+@keyframes float{50%{transform:rotate(1.5deg) translateY(-12px)}}
+.tabs{display:flex;gap:8px;align-items:center;padding:12px 14px;background:#081628}
+.tabs i{width:11px;height:11px;border-radius:50%;background:#ff5f57}.tabs i:nth-child(2){background:#febc2e}.tabs i:nth-child(3){background:#28c840}
+.tabs span{margin-left:10px;color:var(--mut);font-size:.82rem}
+pre{padding:20px;font:500 .9rem/1.75 ui-monospace,Menlo,Consolas,monospace;color:#cfe0f7;min-height:250px;white-space:pre-wrap}
+.k{color:#ff9d6b}.s{color:#7ee0b5}.f{color:#7db4ff}.c{color:#6a819f}
+
+/* SECCIONES */
+section{padding:clamp(64px,10vw,120px) clamp(20px,6vw,96px)}
+.wrap{max-width:1080px;margin:auto}
+h2{font-size:clamp(2rem,4.5vw,3.2rem);font-weight:800;margin-bottom:12px}
+.sub{color:var(--dark-mut);max-width:60ch;margin-bottom:40px}
+.dark{background:var(--ink);color:var(--text)}
+.dark .sub{color:var(--mut)}
+.reveal{opacity:0;transform:translateY(24px);transition:.7s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+
+/* SOBRE MÍ */
+.about{display:grid;grid-template-columns:280px 1fr;gap:48px;align-items:start}
+.photo{position:relative;width:280px;height:340px;border-radius:24px;background:linear-gradient(135deg,var(--blue),var(--teal));display:grid;place-items:center;color:#fff;font:800 4rem 'Bricolage Grotesque'}
+.photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 15%;border-radius:24px}
+.photo::after{content:"";position:absolute;inset:14px -14px -14px 14px;border:3px solid var(--gold);border-radius:24px;z-index:-1}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px;margin-top:26px}
+.fact{background:var(--white);border-radius:14px;padding:16px 18px;border-left:5px solid var(--teal)}
+.fact:nth-child(2){border-color:var(--blue)}.fact:nth-child(3){border-color:var(--gold)}
+.fact b{display:block;font-family:'Bricolage Grotesque';font-size:1.05rem}
+.fact span{color:var(--dark-mut);font-size:.92rem}
+
+/* EXPERIENCIA */
+.line{position:relative;padding-left:34px;border-left:3px solid rgba(255,255,255,.15)}
+.line.grow{border-image:none}
+.job{position:relative;margin-bottom:34px}
+.job::before{content:"";position:absolute;left:-44px;top:6px;width:16px;height:16px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 6px rgba(245,179,53,.2)}
+.job small{color:var(--teal);font-weight:600}
+.job h3{font-size:1.45rem;margin:4px 0 8px;color:#fff}
+.job p{color:var(--mut);max-width:70ch}
+.job.other::before{background:var(--blue);box-shadow:0 0 0 6px rgba(47,123,255,.2)}
+
+/* PROYECTO */
+.sw{display:flex;gap:10px;margin-bottom:22px;flex-wrap:wrap}
+.sw button{font:600 1rem Figtree;padding:11px 22px;border-radius:99px;border:2px solid #cddbeb;background:#fff;cursor:pointer;transition:.2s;color:var(--dark-text)}
+.sw button[aria-selected=true]{background:var(--blue);border-color:var(--blue);color:#fff}
+.panel{display:none;background:#fff;border-radius:20px;padding:clamp(22px,4vw,40px);box-shadow:0 20px 50px rgba(12,35,64,.1);animation:pop .4s}
+.panel.show{display:block}
+@keyframes pop{from{opacity:0;transform:scale(.97)}}
+.panel h3{font-size:1.7rem;margin-bottom:10px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:22px}
+.panel h4{font-family:'Bricolage Grotesque';margin-bottom:8px}
+.panel ul{padding-left:20px;color:var(--dark-mut)}
+.panel li{margin-bottom:6px}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.tags span{background:#e5efff;color:#1b4fb0;padding:5px 12px;border-radius:99px;font-size:.88rem;font-weight:600}
+
+/* HABILIDADES */
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+.card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:18px;padding:24px}
+.card h3{color:#fff;font-size:1.25rem;margin-bottom:14px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips span{padding:6px 13px;border-radius:99px;background:rgba(20,184,166,.15);color:#8cf0e3;font-size:.9rem;transition:.25s}
+.chips span:hover{background:var(--gold);color:var(--ink);transform:translateY(-3px)}
+.card:nth-child(2) .chips span{background:rgba(47,123,255,.18);color:#a9c8ff}
+.card:nth-child(3) .chips span{background:rgba(245,179,53,.16);color:#ffd98a}
+
+/* CONTACTO */
+.contact{text-align:center}
+.contact .sub{margin-inline:auto}
+.links{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:10px}
+.links a,.links .loc{display:flex;align-items:center;gap:10px;background:#fff;padding:16px 26px;border-radius:14px;text-decoration:none;font-weight:600;box-shadow:0 8px 24px rgba(12,35,64,.08);transition:.2s}
+.links .loc{background:#fff;padding:16px 26px;border-radius:14px;font-weight:600;box-shadow:0 8px 24px rgba(12,35,64,.08)}
+.links a:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(47,123,255,.2)}
+footer{padding:26px;text-align:center;background:var(--ink);color:var(--mut);font-size:.9rem}
+
+@media(max-width:860px){
+  .hero-in,.about,.two{grid-template-columns:1fr}
+  .editor{transform:none;animation:none}
+  .photo{margin:0 auto 20px}
+  .burger{display:block}
+  nav ul{position:absolute;top:var(--nav-h);left:0;right:0;flex-direction:column;background:var(--ink);padding:10px 16px 18px;display:none}
+  nav ul.open{display:flex}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<nav aria-label="Principal">
+  <a class="logo" href="#inicio">marlon<b>.dev</b></a>
+  <button class="burger" aria-label="Abrir menú" aria-expanded="false">☰</button>
+  <ul id="menu">
+    <li><a href="#inicio">Inicio</a></li>
+    <li><a href="#sobre-mi">Sobre mí</a></li>
+    <li><a href="#experiencia">Experiencia</a></li>
+    <li><a href="#proyecto">Proyectos</a></li>
+    <li><a href="#habilidades">Habilidades</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+  <div class="bar" id="bar"></div>
+</nav>
+
+<header class="hero" id="inicio">
+  <canvas id="rain" aria-hidden="true"></canvas>
+  <div class="hero-in">
+    <div>
+      <p class="hello">Hola, soy</p>
+      <h1>Marlon Restrepo</h1>
+      <p class="role" id="role" aria-label="Ingeniero de Sistemas y Computación"></p>
+      <p class="lead">Ingeniero de Sistemas y Computación de la UTP. Construyo aplicaciones web y móviles, trabajo con bases de datos y me gusta aprender rápido en equipo.</p>
+      <div class="cta">
+        <a class="btn p" href="#proyecto">Ver mi proyecto</a>
+        <a class="btn s" href="#contacto">Contáctame</a>
+      </div>
+    </div>
+    <div class="editor" aria-hidden="true">
+      <div class="tabs"><i></i><i></i><i></i><span>marlon.js</span></div>
+      <pre id="code"></pre>
+    </div>
+  </div>
+</header>
+
+<section id="sobre-mi">
+  <div class="wrap about">
+    <div class="photo reveal">MR<img src="foto.jpg" alt="Foto de Marlon Restrepo" onerror="this.remove()"></div>
+    <div class="reveal">
+      <h2>Sobre mí</h2>
+      <p class="sub" style="margin-bottom:0">Soy ingeniero de sistemas con formación en desarrollo y soporte tecnológico. En la universidad trabajé con C, C++, Java, JavaScript y Python, y el que más domino es Python. Hice mis prácticas en Veritran, donde aprendí bases de datos, programación y pruebas funcionales, y ahora construyo mis propias APIs. Soy adaptable, aprendo rápido y me oriento a resultados. Mi inglés es de nivel profesional (B2+/C1).</p>
+      <div class="facts">
+        <div class="fact"><b>Ing. Sistemas y Computación</b><span>UTP · 2023</span></div>
+        <div class="fact"><b>Técnico en sistemas</b><span>SENA · 2016</span></div>
+        <div class="fact"><b>Inglés B2+/C1</b><span>Nivel profesional</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark" id="experiencia">
+  <div class="wrap">
+    <h2 class="reveal">Experiencia</h2>
+    <p class="sub reveal">Del desarrollo low-code a la atención al cliente bilingüe.</p>
+    <div class="line reveal">
+      <div class="job">
+        <small>Mayo – noviembre 2021 · 6 meses</small>
+        <h3>Practicante universitario · Veritran</h3>
+        <p>Equipo de Soluciones. Construí pantallas, procesos, transacciones y vinculación de componentes en la plataforma low-code de Veritran. Desarrollé las interfaces visuales de pantallas prediseñadas, les di funcionalidad a los botones y trabajé en los proyectos Vacúnate y Educación, aplicando bases de datos y trabajo colaborativo.</p>
+      </div>
+      <div class="job other">
+        <small>Octubre 2025 – actualidad · Remoto</small>
+        <h3>Intérprete consecutivo de español · Interactive Contact Center</h3>
+        <p>Interpretación remota en inglés y español, con precisión y manejo de conversaciones de alta presión.</p>
+      </div>
+      <div class="job other">
+        <small>2021 – 2025 · Pereira</small>
+        <h3>Atención al cliente, ventas y asistencia médica</h3>
+        <p>Accedo 24/7 PEI, World Travel Assist y Lamassu Media. Más de cuatro años de comunicación en inglés y español, CRM y resolución de conflictos.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="proyecto">
+  <div class="wrap">
+    <h2 class="reveal">Mis proyectos</h2>
+    <p class="sub reveal">Mi práctica en Veritran (soluciones web y móviles en low-code) y mi proyecto personal GastosApp, una API REST en Python.</p>
+    <div class="sw reveal" role="tablist">
+      <button role="tab" aria-selected="true" data-p="0">La práctica</button>
+      <button role="tab" aria-selected="false" data-p="1">Vacúnate</button>
+      <button role="tab" aria-selected="false" data-p="2">Educación</button>
+      <button role="tab" aria-selected="false" data-p="3">GastosApp</button>
+    </div>
+
+    <div class="panel show" data-panel="0">
+      <h3>Plan de práctica · 28/05/2021 – 28/11/2021</h3>
+      <p>Escenario: practicante en implementación de software, Equipo de Soluciones. Seguimiento diario y dos evaluaciones de objetivos.</p>
+      <div class="two">
+        <div><h4>Lo que hice</h4><ul>
+          <li>Entender requerimientos</li>
+          <li>Construir el módulo de la solución</li>
+          <li>Crear procesos en la plataforma low-code</li>
+          <li>Configurar transacciones usando las API correctamente</li>
+          <li>Hacer QA</li></ul></div>
+        <div><h4>Lo que entregué</h4><ul>
+          <li>Aplicaciones asignadas</li>
+          <li>Documentación de cada aplicación</li>
+          <li>Resultados de pruebas exitosas</li></ul></div>
+      </div>
+      <div class="tags"><span>Low-code</span><span>API</span><span>Arquitectura end-to-end</span><span>Lógica de programación</span><span>QA</span></div>
+    </div>
+
+    <div class="panel" data-panel="1">
+      <h3>Vacúnate</h3>
+      <p>Aplicación para llevar el registro de las vacunaciones contra el COVID-19. A partir de pantallas prediseñadas que nos entregaron, desarrollé las interfaces visuales y le di funcionalidad a los botones.</p>
+      <div class="tags"><span>Low-code</span><span>Interfaces</span><span>Botones y lógica</span><span>Pruebas funcionales</span></div>
+    </div>
+
+    <div class="panel" data-panel="2">
+      <h3>Educación</h3>
+      <p>Aplicación para registrar las notas escolares y la información de estudiantes, profesores y otros datos del colegio. Igual que en Vacúnate, construí las interfaces de las pantallas prediseñadas y programé la funcionalidad de los botones.</p>
+      <div class="tags"><span>Low-code</span><span>Interfaces</span><span>Botones y lógica</span><span>Trabajo en equipo</span></div>
+    </div>
+
+    <div class="panel" data-panel="3">
+      <h3>GastosApp · API REST de gastos personales</h3>
+      <p>Hecha con Python y FastAPI. Cada usuario se registra, inicia sesión y administra solo sus propios gastos. Incluye un resumen mensual por categoría en pesos (COP) y en dólares (USD), usando una API externa de tasas de cambio.</p>
+      <div class="two">
+        <div><h4>Lo que hace</h4><ul>
+          <li>Registro e inicio de sesión con tokens JWT</li>
+          <li>Crear, listar, editar y eliminar gastos</li>
+          <li>Resumen mensual en COP y USD</li>
+          <li>Si la API de cambio falla, usa un valor de respaldo</li></ul></div>
+        <div><h4>Decisiones de seguridad</h4><ul>
+          <li>Contraseñas cifradas con bcrypt</li>
+          <li>Clave secreta en variables de entorno</li>
+          <li>Un usuario nunca ve gastos ajenos</li>
+          <li>Pruebas automáticas con pytest</li></ul></div>
+      </div>
+      <div class="tags"><span>Python</span><span>FastAPI</span><span>SQLAlchemy</span><span>JWT</span><span>pytest</span><span>Render</span></div>
+      <div class="cta" style="margin-top:26px">
+        <a class="btn p" href="https://gastosapp-73x6.onrender.com/docs" target="_blank" rel="noopener">Probar la demo</a>
+        <a class="btn s" style="border-color:#cddbeb;color:var(--dark-text)" href="https://github.com/marlonrestrepoGit/gastosapp" target="_blank" rel="noopener">Ver el código</a>
+      </div>
+      <p style="margin-top:14px;font-size:.9rem;color:var(--dark-mut)">La demo corre en un plan gratuito: la primera carga puede tardar cerca de un minuto.</p>
+    </div>
+  </div>
+</section>
+
+<section class="dark" id="habilidades">
+  <div class="wrap">
+    <h2 class="reveal">Habilidades</h2>
+    <p class="sub reveal">Lo que uso para construir aplicaciones web.</p>
+    <div class="cols reveal">
+      <div class="card"><h3>Desarrollo</h3><div class="chips"><span>Python</span><span>FastAPI</span><span>APIs REST</span><span>Low-code</span><span>C / C++ / Java</span><span>JavaScript</span></div></div>
+      <div class="card"><h3>Datos y calidad</h3><div class="chips"><span>SQL</span><span>MySQL</span><span>SQLAlchemy</span><span>pytest</span><span>Pruebas funcionales</span><span>Seguridad (JWT, bcrypt)</span></div></div>
+      <div class="card"><h3>Equipo</h3><div class="chips"><span>Trabajo en equipo</span><span>Liderazgo</span><span>Aprendizaje rápido</span><span>Inglés B2+/C1</span><span>Soporte técnico</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contacto">
+  <div class="wrap">
+    <h2 class="reveal">Hablemos</h2>
+    <p class="sub reveal">Estoy buscando mi próxima oportunidad como desarrollador. Escríbeme o llámame.</p>
+    <div class="links reveal">
+      <a href="mailto:Marlon.restrepo@utp.edu.co"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#2f7bff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg> Marlon.restrepo@utp.edu.co</a>
+      <a href="https://wa.me/573206951693" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#25d366"/><path d="M2 22l1.500-5.500 4 4z" fill="#25d366"/><path d="M8.500 6.800c-.7.7-.9 1.700-.5 2.900.9 2.300 2.900 4.300 5.200 5.200 1.200.4 2.200.2 2.900-.5l.3-.8-1.800-1.100-.9.800c-.8-.2-2.200-1.600-2.400-2.400l.8-.9-1.100-1.800z" fill="#fff"/></svg> 320 695 1693</a>
+      <a href="https://github.com/marlonrestrepoGit" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M12 .5A11.5 11.5 0 0 0 .5 12c0 5.08 3.29 9.38 7.86 10.9.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.15.08 1.76 1.19 1.76 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.78 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.42-2.69 5.39-5.25 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5z"/></svg> GitHub</a>
+      <a href="https://gastosapp-73x6.onrender.com/docs" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#14b8a6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 19c1-4 3-6 6-8m0 0 6-6 2 2-6 6m-2-2 2 2m-8 6 3-1"/></svg> GastosApp en vivo</a>
+      <span class="loc"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#f5b335" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s7-6.200 7-12a7 7 0 0 0-14 0c0 5.800 7 12 7 12z"/><circle cx="12" cy="10" r="2.500"/></svg> Pereira, Colombia</span>
+    </div>
+  </div>
+</section>
+<footer>© <span id="y"></span> Marlon Restrepo</footer>
+
+<script>
+/* menú móvil */
+const menu=document.getElementById('menu'),bt=document.querySelector('.burger');
+bt.onclick=()=>{const o=menu.classList.toggle('open');bt.setAttribute('aria-expanded',o)};
+menu.onclick=e=>{if(e.target.tagName==='A')menu.classList.remove('open')};
+document.getElementById('y').textContent=new Date().getFullYear();
+
+/* sección activa + barra de progreso */
+const links=[...menu.querySelectorAll('a')],secs=links.map(a=>document.querySelector(a.hash));
+function onScroll(){
+  const y=scrollY+window.innerHeight*.35;
+  let i=0;secs.forEach((s,k)=>{if(s.offsetTop<=y)i=k});
+  links.forEach((a,k)=>a.classList.toggle('on',k===i));
+  const h=document.documentElement.scrollHeight-innerHeight;
+  document.getElementById('bar').style.width=(scrollY/h*100)+'%';
+}
+addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+/* aparición al hacer scroll */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.15});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+/* pestañas del proyecto */
+document.querySelectorAll('.sw button').forEach(b=>b.onclick=()=>{
+  document.querySelectorAll('.sw button').forEach(x=>x.setAttribute('aria-selected',x===b));
+  document.querySelectorAll('.panel').forEach(p=>p.classList.toggle('show',p.dataset.panel===b.dataset.p));
+});
+
+/* texto que se escribe */
+const roles=['Ingeniero de Sistemas y Computación','Desarrollador Full Stack Junior','Apasionado por las bases de datos'];
+const roleEl=document.getElementById('role');let ri=0,ci=0,del=false;
+function typeRole(){
+  const t=roles[ri];
+  roleEl.textContent=t.slice(0,ci);
+  if(!del&&ci===t.length){del=true;return setTimeout(typeRole,1800)}
+  if(del&&ci===0){del=false;ri=(ri+1)%roles.length}
+  ci+=del?-1:1;setTimeout(typeRole,del?30:70);
+}
+typeRole();
+
+/* editor que escribe código */
+const src=[
+['<span class="k">const</span> marlon = {',0],
+['  rol: <span class="s">"Full Stack Junior"</span>,',0],
+['  estudios: <span class="s">"Ing. Sistemas · UTP"</span>,',0],
+['  stack: [<span class="s">"Python"</span>, <span class="s">"FastAPI"</span>, <span class="s">"SQL"</span>],',0],
+['  ingles: <span class="s">"B2+/C1"</span>,',0],
+['};',0],
+['',0],
+['<span class="k">function</span> <span class="f">contratar</span>(equipo) {',0],
+['  <span class="k">return</span> equipo.<span class="f">crecer</span>(marlon);',0],
+['}',0]];
+const code=document.getElementById('code');let l=0;
+function typeCode(){
+  if(l>=src.length)return;
+  code.innerHTML+=src[l][0]+'\n';l++;setTimeout(typeCode,420);
+}
+setTimeout(typeCode,600);
+
+/* lluvia de código */
+const cv=document.getElementById('rain'),cx=cv.getContext('2d');
+let cols,drops;const chars='{}</>();=01function const SQL API'.split('');
+function size(){cv.width=cv.offsetWidth;cv.height=cv.offsetHeight;cols=Math.floor(cv.width/22);drops=Array.from({length:cols},()=>Math.random()*cv.height/20)}
+size();addEventListener('resize',size);
+function rain(){
+  cx.fillStyle='rgba(12,35,64,.12)';cx.fillRect(0,0,cv.width,cv.height);
+  cx.font='16px monospace';
+  drops.forEach((y,i)=>{
+    cx.fillStyle=i%7===0?'#f5b335':(i%2?'#14b8a6':'#2f7bff');
+    cx.fillText(chars[Math.floor(Math.random()*chars.length)],i*22,y*20);
+    if(y*20>cv.height&&Math.random()>.975)drops[i]=0;drops[i]+=.5;
+  });
+}
+if(!matchMedia('(prefers-reduced-motion:reduce)').matches)setInterval(rain,60);
+</script>
+</body>
+</html>
